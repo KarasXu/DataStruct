@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1631173850 source:d:\codeblocks\project\recurrence\main.c
+	<stdio.h>
+	<stdlib.h>
+
