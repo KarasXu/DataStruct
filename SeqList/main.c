@@ -35,7 +35,7 @@ int InsertList(PSeqList L, unsigned int i, ElemType *e)
 {
     isExistL(L);
     isExistE(e);
-    isLegal(i);
+    isLegal(L, i);
 
     /*
     **从L->data[k-1](队尾) 复制到 L->data[k]
@@ -83,7 +83,7 @@ int GetItem(PSeqList L, unsigned int i, ElemType *e)
 {
     isExistL(L);
     isExistE(e);
-    isLegal(i);
+    isLegal(L, i);
     /*
     for(int k = 0, k <= i; k++)
     {
@@ -108,7 +108,8 @@ void Printist(PSeqList L)
 {
     isExistL(L);
     isEmpty(L);
-    for(int k = 0, k < L->length, k++)
+    int k;
+    for(k = 0; (k < L->length); k++)
     {
         //printf("%-3d", L->data+k);
         printf("%-3d", L->data[k]);
@@ -121,7 +122,8 @@ int LocateElem(PSeqList L, ElemType *e)
 {
     isExistL(L);
     isExistE(e);
-    for(int k = 0; k < L->length, k++)
+    int k;
+    for(k = 0; k < L->length; k++)
     {
         if(L->data[k] == *e)
         {
@@ -136,7 +138,7 @@ int LocateElem(PSeqList L, ElemType *e)
 void DeleteElem(PSeqList L, unsigned int i)
 {
     isExistL(L);
-    isLegal(i);
+    isLegal(L, i);
     //把i之后的元素向前移动
     int k;
     for(k = i; k < L->length; k++)
@@ -162,7 +164,7 @@ void PopBack(PSeqList L)
 };
 
 //采用归并的方法将两个升序顺序表La和Lb合并成一个升序顺序表Lc
-int MergeList(PSeqList La, PSeqList Lb. PSeqList Lc)
+int MergeList(PSeqList La, PSeqList Lb, PSeqList Lc)
 {
     isExistL(La);
     isExistL(Lb);
@@ -179,13 +181,15 @@ void isExistL(PSeqList L)
     }
 }
 
-void isLegal(unsigned int i)
+
+void isLegal(PSeqList L, unsigned int i)
 {
     if(i < 1 || i > (L->length))
     {
         printf("插入的位置不合法！\n");
     }
 }
+
 
 void isExistE(ElemType *e)
 {
@@ -209,7 +213,16 @@ void isEmpty(PSeqList L)
 
 int main()
 {
+    int i;
     SeqList L;                  //创建顺序表
     ElemType e;                 //创建一个数据元素
     InitList(&L);               //初始化顺序表
+    printf("在元素表中插入元素(1,2,3,4,5,6,7,8,9,10)\n");
+    for(i = 0; i < 10; i++)
+    {
+        e = i;
+        InsertList(&L, 1, &e);
+    }
+    Printist(&L);
+    return 0;
 }
