@@ -184,7 +184,7 @@ void isExistL(PSeqList L)
 
 void isLegal(PSeqList L, unsigned int i)
 {
-    if(i < 1 || i > (L->length))
+    if(i < 0 || i > (L->length))
     {
         printf("插入的位置不合法！\n");
     }

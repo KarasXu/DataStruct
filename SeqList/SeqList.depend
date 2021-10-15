@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1634093491 source:d:\workspace\datastruct\seqlist\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
